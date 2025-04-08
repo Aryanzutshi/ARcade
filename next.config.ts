@@ -2,11 +2,6 @@ import { createSecureHeaders } from 'next-secure-headers';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: '/', 
-  images: {
-    unoptimized: true,
-    formats: ['image/avif', 'image/webp'],
-  },
   headers: async () => {
     const cspHeader = `
       default-src 'self';
