@@ -9,9 +9,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { getCTFChallenge } from "@/lib/data"
 
-export default function CTFChallengePage({ params }: { params: { id: string } }) {
-  const challenge = getCTFChallenge(params.id)
+type Params = Promise<{ id: string }>
 
+export default async function CTFChallengePage({ params }: { params: Params }) {
+  const { id } = await params
+  const challenge = await getCTFChallenge(id)
+  
   if (!challenge) {
     return (
       <div className="container px-4 py-12 md:py-24 text-center">

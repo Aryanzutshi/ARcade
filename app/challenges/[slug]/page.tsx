@@ -7,8 +7,11 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { getChallenge } from "@/lib/data"
 
-export default function ChallengePage({ params }: { params: { slug: string } }) {
-  const challenge = getChallenge(params.slug)
+type Params = Promise<{ slug: string }>
+
+export default async function ChallengePage({ params }: { params: Params }) {
+  const { slug } = await params
+  const challenge = await getChallenge(slug)
 
   const defaultChallenge = {
     id: "storage-overdrive",
