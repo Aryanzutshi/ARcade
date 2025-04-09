@@ -25,21 +25,21 @@ export default async function ChallengePage({ params }: { params: Params }) {
     author: "CryptoHacker",
     authorImage: "/placeholder.svg?height=40&width=40",
     content: `
-      <h2>Challenge Description</h2>
-      <p>In this challenge, you'll need to find and exploit vulnerabilities in a decentralized storage protocol to gain access to protected data.</p>
+      <h1><strong>Challenge Description</strong></h1>
+      <p>In this challenge, you'll need to find and exploit vulnerabilities in a decentralized storage protocol to gain access to protected data.</p> <br>
 
-      <h2>Scenario</h2>
-      <p>You've discovered a new decentralized storage service built on Arweave that claims to be "unhackable." The service stores sensitive data and uses a custom access control mechanism. Your goal is to bypass this mechanism and retrieve a secret file.</p>
+      <h1><strong>Scenario</strong></h1>
+      <p>You've discovered a new decentralized storage service built on Arweave that claims to be "unhackable." The service stores sensitive data and uses a custom access control mechanism. Your goal is to bypass this mechanism and retrieve a secret file.</p> <br>
 
-      <h2>Objectives</h2>
+      <h1><strong>Objectives</strong></h1>
       <ul>
         <li>Analyze the storage protocol's architecture</li>
         <li>Identify vulnerabilities in the access control mechanism</li>
         <li>Exploit these vulnerabilities to access the protected data</li>
         <li>Retrieve the secret flag</li>
-      </ul>
+      </ul> <br>
 
-      <h2>Hints</h2>
+      <h1><strong>Hints</strong></h1>
       <ul>
         <li>Look closely at how the protocol handles transaction verification</li>
         <li>The access control mechanism might not properly validate all request parameters</li>
@@ -47,9 +47,9 @@ export default async function ChallengePage({ params }: { params: Params }) {
       </ul>
     `,
     resources: [
-      { name: "Arweave Documentation", url: "#" },
-      { name: "Storage Protocol Basics", url: "#" },
-      { name: "Common Vulnerabilities in Decentralized Systems", url: "#" },
+      { name: "Arweave Documentation", url: "https://docs.arweave.org/developers" },
+      { name: "Storage Protocol Basics", url: "https://arwiki.arweave.dev/#/en/storage-endowment" },
+      { name: "Common Vulnerabilities in Decentralized Systems", url: "https://medium.com/immunefi/the-top-10-most-common-vulnerabilities-in-web3-bf7a921d489f" },
     ],
   }
 

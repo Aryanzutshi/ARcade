@@ -10,9 +10,29 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "CTF.AO - Web3 CTF Platform",
-  description: "Learn decentralized computing, security, and protocol design through hands-on challenges",
-}
+  title: "ARcade",
+  icons: {
+    icon: "/DumDum.ico"
+  },
+  description: "Your one stop platform for learning Web3 Auditing and CTF's",
+  keywords: ['Smart Contract Security', 'AI-Powered Auditing', 'Web3'],
+  authors: [{ name: 'Aryan', url: 'https://github.com/aryanzutshi' }],
+  creator: 'Aryan Zutshi',
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'de-DE': '/de-DE',
+    },
+  },
+  openGraph: {
+    title: "ARcade",
+    description: "Your one stop platform for learning Web3 Auditing and CTF's",
+    siteName: "ARcade",
+    locale: "en_US",
+    type: "website",
+  }
+};
 
 export default function RootLayout({
   children,

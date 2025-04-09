@@ -15,7 +15,7 @@ export function ParticleContainer() {
     // Set canvas dimensions
     const setCanvasDimensions = () => {
       canvas.width = window.innerWidth
-      canvas.height = window.innerHeight * 0.8 // 80% of viewport height
+      canvas.height = window.innerHeight 
     }
 
     setCanvasDimensions()
