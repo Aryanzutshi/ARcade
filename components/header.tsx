@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Terminal, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import WalletConnect from "@/components/walletConnect"
 
