@@ -1,6 +1,6 @@
 "use client";
 
-import { spawnProcess } from "@/utils/arKit";
+import { spawnProcess } from "@/utils/ArweaveUtils";
 
 export function StartChallengeButton() {
   async function spn() {

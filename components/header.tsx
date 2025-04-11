@@ -4,8 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { Terminal, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import WalletConnect from "@/components/walletConnect"
-import { connectWallet, disconnectWallet, getWalletDetails } from "@/utils/arKit";
+import {
+  connectWallet,
+} from "@/utils/ArweaveUtils";
 import { Button } from "./ui/button";
 
 export function Header() {
@@ -46,7 +47,7 @@ export function Header() {
           <ThemeToggle />
           {/* Wallet Button Here */}
           <Button
-            onClick={ connectWallet }
+            onClick={connectWallet}
             className="bg-gradient-to-r rounded-2xl from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-md transition-transform hover:scale-105"
           >
             Connect Wallet
@@ -96,7 +97,12 @@ export function Header() {
 
             <div className="flex flex-col space-y-2 mt-6">
               {/* Wallet Button in Mobile View */}
-              <WalletConnect />
+              <Button
+                onClick={connectWallet}
+                className="bg-gradient-to-r rounded-2xl from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-md transition-transform hover:scale-105"
+              >
+                Connect Wallet
+              </Button>
             </div>
           </div>
         </div>

@@ -1,19 +1,102 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { ArrowLeft, Filter, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ChallengeCard } from "@/components/challenge-card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { getChallenges } from "@/lib/data"
+import { RoleSelectionModal } from "@/components/role-selection-modal"
+
+// Mock challenge data
+const challenges = [
+  {
+    id: "permaleak-protocol",
+    title: "PermaLeak Protocol",
+    description: "Exploit broken access controls in Arweave-based storage apps.",
+    difficulty: "Beginner",
+    category: "Storage",
+    points: 250,
+    color: "purple",
+  },
+  {
+    id: "immutable-intrusion",
+    title: "Immutable Intrusion",
+    description: "Respond to an attack targeting Arweave node signature validation.",
+    difficulty: "Intermediate",
+    category: "Security",
+    points: 500,
+    color: "pink",
+  },
+  {
+    id: "backdoor-in-the-block",
+    title: "Backdoor in the Block",
+    description: "Uncover and patch backdoors in SmartWeave autonomous agents.",
+    difficulty: "Advanced",
+    category: "Agents",
+    points: 750,
+    color: "orange",
+  },
+  {
+    id: "gateway-gambit",
+    title: "Gateway Gambit",
+    description: "Manipulate a compromised Arweave gateway to serve false data.",
+    difficulty: "Intermediate",
+    category: "Networking",
+    points: 450,
+    color: "pink",
+  },
+  {
+    id: "profit-sharing-plunder",
+    title: "Profit Sharing Plunder",
+    description: "Exploit a flaw in a PST smart contract to siphon tokens.",
+    difficulty: "Advanced",
+    category: "Contracts",
+    points: 800,
+    color: "orange",
+  },
+  {
+    id: "mirror-maze",
+    title: "Mirror Maze",
+    description: "Trace a phishing attack across multiple mirrored permaweb apps.",
+    difficulty: "Intermediate",
+    category: "Forensics",
+    points: 600,
+    color: "pink",
+  },
+]
 
 export default function ChallengePage() {
-  const challenges = getChallenges()
+  const router = useRouter()
+  const [selectedChallenge, setSelectedChallenge] = useState<string | null>(null)
+  const [showRoleModal, setShowRoleModal] = useState(false)
+
+  const handleStartChallenge = (challengeId: string) => {
+    setSelectedChallenge(challengeId)
+    setShowRoleModal(true)
+  }
+
+  const handleRoleSelect = (role: "red" | "blue") => {
+    if (selectedChallenge) {
+      // In a real app, you might want to store the selected role in a state management solution
+      // For now, we'll just navigate to the challenge page
+      router.push(`/challenges/${selectedChallenge}?role=${role}`)
+    }
+  }
 
   return (
-    <div className="container px-4 py-12 md:py-24 text-zinc-900 dark:text-zinc-100">
+    <div className="container px-4 py-12">
+      <RoleSelectionModal
+        isOpen={showRoleModal}
+        onClose={() => setShowRoleModal(false)}
+        onRoleSelect={handleRoleSelect}
+        challengeTitle={selectedChallenge ? challenges.find((c) => c.id === selectedChallenge)?.title || "" : ""}
+      />
+
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
-          <Link href="/" className="inline-flex items-center text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white mb-4">
+          <Link href="/" className="inline-flex items-center text-sm text-zinc-400 hover:text-white mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
@@ -27,18 +110,15 @@ export default function ChallengePage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl p-6 mb-8">
+      <div className="bg-zinc-900/70 border border-zinc-800 rounded-xl p-6 mb-8">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-500" />
-            <Input
-              placeholder="Search challenges..."
-              className="pl-10 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100"
-            />
+            <Input placeholder="Search challenges..." className="pl-10 bg-zinc-800 border-zinc-700" />
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Select defaultValue="all">
-              <SelectTrigger className="w-full sm:w-[180px] bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white">
+              <SelectTrigger className="w-full sm:w-[180px] bg-zinc-800 border-zinc-700">
                 <SelectValue placeholder="Difficulty" />
               </SelectTrigger>
               <SelectContent>
@@ -49,7 +129,7 @@ export default function ChallengePage() {
               </SelectContent>
             </Select>
             <Select defaultValue="all">
-              <SelectTrigger className="w-full sm:w-[180px] bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white">
+              <SelectTrigger className="w-full sm:w-[180px] bg-zinc-800 border-zinc-700">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -57,13 +137,12 @@ export default function ChallengePage() {
                 <SelectItem value="storage">Storage</SelectItem>
                 <SelectItem value="security">Security</SelectItem>
                 <SelectItem value="agents">Agents</SelectItem>
-                <SelectItem value="smart-contracts">Smart Contracts</SelectItem>
+                <SelectItem value="contracts">Contracts</SelectItem>
+                <SelectItem value="networking">Networking</SelectItem>
+                <SelectItem value="forensics">Forensics</SelectItem>
               </SelectContent>
             </Select>
-            <Button
-              variant="outline"
-              className="border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300"
-            >
+            <Button variant="outline" className="border-zinc-700 text-zinc-400">
               <Filter className="mr-2 h-4 w-4" />
               Filters
             </Button>
@@ -74,97 +153,32 @@ export default function ChallengePage() {
       {/* Challenge Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {challenges.map((challenge) => (
-          <ChallengeCard
+          <div
             key={challenge.id}
-            title={challenge.title}
-            description={challenge.description}
-            difficulty={challenge.difficulty}
-            category={challenge.category}
-            points={challenge.points}
-            color={
-              challenge.difficulty === "Beginner"
-                ? "from-purple-600 to-blue-600"
-                : challenge.difficulty === "Intermediate"
-                  ? "from-pink-600 to-red-600"
-                  : "from-yellow-600 to-orange-600"
-            }
-          />
+            className={`bg-zinc-900/70 border border-zinc-800 rounded-xl overflow-hidden hover:border-${challenge.color}-500 transition-colors`}
+          >
+            <div className={`h-1 bg-${challenge.color}-600`}></div>
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <h2 className="text-xl font-bold">{challenge.title}</h2>
+                <div className="px-2 py-1 rounded text-xs font-medium bg-zinc-800 text-zinc-400">
+                  {challenge.difficulty}
+                </div>
+              </div>
+              <p className="text-zinc-400 text-sm mb-4">{challenge.description}</p>
+              <div className="flex items-center justify-between text-sm mb-4">
+                <div className="text-zinc-500">{challenge.category}</div>
+                <div className="font-mono text-yellow-400">{challenge.points} pts</div>
+              </div>
+              <Button
+                onClick={() => handleStartChallenge(challenge.id)}
+                className="w-full bg-zinc-800 hover:bg-zinc-700 text-white"
+              >
+                Start Challenge
+              </Button>
+            </div>
+          </div>
         ))}
-
-        {/* Additional challenges */}
-        <ChallengeCard
-          title="Smart Contract Sleuth"
-          description="Find and exploit vulnerabilities in smart contracts"
-          difficulty="Intermediate"
-          category="Smart Contracts"
-          points={400}
-          color="from-green-600 to-teal-600"
-        />
-        <ChallengeCard
-          title="Permanent Record"
-          description="Recover deleted data from the permanent web"
-          difficulty="Beginner"
-          category="Storage"
-          points={200}
-          color="from-blue-600 to-indigo-600"
-        />
-        <ChallengeCard
-          title="Autonomous Takeover"
-          description="Gain control of a rogue autonomous agent"
-          difficulty="Advanced"
-          category="Agents"
-          points={800}
-          color="from-red-600 to-orange-600"
-        />
-        <ChallengeCard
-          title="Crypto Conundrum"
-          description="Break the encryption on a secure message"
-          difficulty="Intermediate"
-          category="Security"
-          points={450}
-          color="from-purple-600 to-indigo-600"
-        />
-        <ChallengeCard
-          title="Data Smuggler"
-          description="Hide data in plain sight using steganography"
-          difficulty="Beginner"
-          category="Storage"
-          points={300}
-          color="from-cyan-600 to-blue-600"
-        />
-        <ChallengeCard
-          title="Contract Chaos"
-          description="Debug and fix a broken smart contract"
-          difficulty="Advanced"
-          category="Smart Contracts"
-          points={700}
-          color="from-emerald-600 to-green-600"
-        />
-      </div>
-
-      {/* Pagination */}
-      <div className="flex justify-center">
-        <nav className="flex items-center space-x-2">
-          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
-            &lt;
-          </Button>
-          <Button className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
-            1
-          </Button>
-          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
-            2
-          </Button>
-          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
-            3
-          </Button>
-          <span className="text-zinc-500">...</span>
-          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
-            8
-          </Button>
-          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
-            &gt;
-          </Button>
-        </nav>
       </div>
     </div>
   )
