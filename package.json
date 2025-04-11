@@ -11,7 +11,7 @@
   "dependencies": {
     "@permaweb/ao-connect": "^0.0.27",
     "@permaweb/ao-sdk": "^0.0.23",
-    "@permaweb/aoconnect": "^0.0.79",
+    "@permaweb/aoconnect": "^0.0.77",
     "@radix-ui/react-progress": "^1.1.2",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-separator": "^1.1.2",

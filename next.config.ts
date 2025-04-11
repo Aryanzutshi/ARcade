@@ -8,13 +8,13 @@ const nextConfig = {
       script-src 'self' 'unsafe-eval' 'unsafe-inline';
       style-src 'self' 'unsafe-inline';
       img-src 'self' blob: data:;
-      font-src 'self' https://fonts.gstatic.com;
+      font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/npm/antd/dist/antd.min.css;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
       frame-ancestors 'none';
       upgrade-insecure-requests;
-      connect-src 'self' https://arweave.net https://g8way.io https://arweave.net/graphql; 
+      connect-src 'self' https://arweave.net https://g8way.io https://arweave.net/graphql  https://mu.ao-testnet.xyz/; 
     `.trim().replace(/\n/g, ' ');
 
     return [

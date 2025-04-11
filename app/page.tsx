@@ -29,7 +29,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/learn">
                 <Button className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105">
-                  Enter Lab
+                  Learn more about Web3!!
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -60,7 +60,7 @@ export default function Home() {
 
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-12 leading-tight text-zinc-900 dark:text-white">
               <span className="text-cyan-600 dark:text-cyan-400 block">
-                Think Hack The Box — but for Web3
+                Think Hack The Box and Immunify — but for Web3
               </span>
               <span>Powered by Arweave & AO</span>
             </h2>

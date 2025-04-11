@@ -914,7 +914,7 @@ export function getCTFChallenges() {
       difficulty: "Medium",
       categories: ["Smart Contract", "NFT"],
       platform: "Solana",
-      platformIcon: "/placeholder.svg?height=24&width=24",
+      platformIcon: "/solana.avif",
       reward: 30000,
       timeLeft: "21 days",
       timePercentage: 80,
