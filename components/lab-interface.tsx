@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Terminal, Maximize2, Minimize2, RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -15,7 +14,7 @@ interface LabInterfaceProps {
 export function LabInterface({ role, challengeId }: LabInterfaceProps) {
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [terminalOutput, setTerminalOutput] = useState<string[]>([
-    "Welcome to the CTF.AO Lab Environment",
+    "Welcome to the ARcade Lab Environment",
     `Role: ${role === "red" ? "Red Team (Offensive)" : "Blue Team (Defensive)"}`,
     `Challenge: ${challengeId}`,
     "Type 'help' for available commands.",
@@ -29,14 +28,11 @@ export function LabInterface({ role, challengeId }: LabInterfaceProps) {
 
     if (!command.trim()) return
 
-    // Add command to output
     setTerminalOutput((prev) => [...prev, `$ ${command}`])
 
-    // Process command
     const cmd = command.toLowerCase().trim()
     setIsLoading(true)
 
-    // Simulate processing delay
     setTimeout(() => {
       switch (cmd) {
         case "help":
@@ -120,6 +116,7 @@ export function LabInterface({ role, challengeId }: LabInterfaceProps) {
               "Blocking suspicious IP 192.168.1.254...",
               "Setting up additional monitoring...",
               "Defenses implemented successfully!",
+              "Flag: gmADI",
               "",
             ])
           } else {
@@ -140,7 +137,6 @@ export function LabInterface({ role, challengeId }: LabInterfaceProps) {
       setIsLoading(false)
     }, 1000)
 
-    // Clear input
     setCommand("")
   }
 
@@ -170,7 +166,7 @@ export function LabInterface({ role, challengeId }: LabInterfaceProps) {
               setTimeout(() => {
                 setTerminalOutput([
                   "Environment refreshed.",
-                  "Welcome to the CTF.AO Lab Environment",
+                  "Welcome to the ARcade Lab Environment",
                   `Role: ${role === "red" ? "Red Team (Offensive)" : "Blue Team (Defensive)"}`,
                   `Challenge: ${challengeId}`,
                   "Type 'help' for available commands.",
@@ -191,10 +187,12 @@ export function LabInterface({ role, challengeId }: LabInterfaceProps) {
           </Button>
         </div>
       </div>
+
+      {/* ⬇️ Terminal Output */}
       <div
         className={cn(
-          "font-mono text-sm bg-black text-green-500 p-4 overflow-auto",
-          isFullscreen ? "h-[calc(100vh-40px)]" : "h-80",
+          "font-mono text-sm bg-black text-green-500 p-4 overflow-y-auto whitespace-pre-wrap break-words flex flex-col",
+          isFullscreen ? "h-[calc(100vh-40px)]" : "h-80"
         )}
       >
         {terminalOutput.map((line, i) => (
@@ -202,7 +200,10 @@ export function LabInterface({ role, challengeId }: LabInterfaceProps) {
             {line}
           </div>
         ))}
+
         {isLoading && <div className="animate-pulse">Processing...</div>}
+
+        {/* ⬇️ Command Input */}
         <form onSubmit={handleCommand} className="flex items-center mt-2">
           <span className="text-white mr-2">$</span>
           <input
