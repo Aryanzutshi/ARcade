@@ -66,9 +66,6 @@ To clone and run this app locally, make sure you have [Git](https://git-scm.com)
 # Clone this repository
 git clone https://github.com/aryanzutshi/ARcade/
 
-# Navigate into the project directory
-cd ARcade
-
 # Install dependencies
 npm install
 
