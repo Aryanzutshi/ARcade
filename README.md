@@ -1,10 +1,11 @@
 <h1 align="center">
   <br />
-  <a href="https://a-rcade.vercel.app/">
-    <img src="/public/Banner.avif" alt="ARcade Logo" width="200" />
-  </a>
-  <br />
   ✨ ARcade ✨
+  <br />
+  <br />
+  <a href="https://a-rcade.vercel.app/">
+    <img src="/public/Banner.avif" alt="ARcade Logo" width="728" height="350" />
+  </a>
   <br />
 </h1>
 
