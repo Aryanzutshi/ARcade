@@ -60,13 +60,6 @@ export function getChallenges(): Challenge[] {
     <li>Arweave transaction metadata might be more revealing than you think</li>
     <li>Static frontends don’t guarantee secure data flows</li>
   </ul>
-
-  <h2>Resources</h2>
-  <ul>
-    <li><a href="https://docs.arweave.org/developers">Arweave Documentation</a></li>
-    <li><a href="https://arwiki.arweave.dev/#/en/storage-endowment">Storage Protocol Basics</a></li>
-    <li><a href="https://medium.com/immunefi/the-top-10-most-common-vulnerabilities-in-web3-bf7a921d489f">Common Vulnerabilities in Decentralized Systems</a></li>
-  </ul>
 </div>
       `,
       resources: [
@@ -643,7 +636,7 @@ export function getLeaderboardData() {
     {
       id: "user1",
       username: "CryptoNinja",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/Builder2.avif",
       level: 10,
       points: 12500,
       monthlyPoints: 2300,
@@ -659,7 +652,7 @@ export function getLeaderboardData() {
     {
       id: "user2",
       username: "BlockchainWizard",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/explorer.avif",
       level: 9,
       points: 11200,
       monthlyPoints: 1800,
@@ -674,7 +667,7 @@ export function getLeaderboardData() {
     {
       id: "user3",
       username: "DecentralizedDev",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/progimage.avif",
       level: 8,
       points: 9800,
       monthlyPoints: 2100,
@@ -684,7 +677,7 @@ export function getLeaderboardData() {
     {
       id: "user4",
       username: "CryptoHacker",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/Sentinel.avif",
       level: 6,
       points: 8750,
       monthlyPoints: 1500,
@@ -699,7 +692,7 @@ export function getLeaderboardData() {
     {
       id: "user5",
       username: "ArweaveExplorer",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/Security-Guru.avif",
       level: 7,
       points: 8200,
       monthlyPoints: 1200,
@@ -709,7 +702,7 @@ export function getLeaderboardData() {
     {
       id: "user6",
       username: "AODeveloper",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/pickachu.jpg",
       level: 5,
       points: 6500,
       monthlyPoints: 1900,
@@ -719,7 +712,7 @@ export function getLeaderboardData() {
     {
       id: "user7",
       username: "SecurityGuru",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/Builder.avif",
       level: 8,
       points: 9200,
       monthlyPoints: 1100,
@@ -729,7 +722,7 @@ export function getLeaderboardData() {
     {
       id: "user8",
       username: "PermanentData",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/leaderboard3.jpeg",
       level: 6,
       points: 7800,
       monthlyPoints: 900,
@@ -739,7 +732,7 @@ export function getLeaderboardData() {
     {
       id: "user9",
       username: "SmartContractPro",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/leaderboard2.jpeg",
       level: 7,
       points: 8500,
       monthlyPoints: 1600,
@@ -749,7 +742,7 @@ export function getLeaderboardData() {
     {
       id: "user10",
       username: "CryptoCoder",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/leaderboard.jpeg",
       level: 5,
       points: 6200,
       monthlyPoints: 1400,
@@ -820,15 +813,12 @@ export function getCTFChallenges() {
   const challenges: CTFChallenge[] = [
     {
       id: "defi-protocol-audit",
-      title: "DeFi Protocol Security Audit",
-      description:
-        "Find vulnerabilities in a decentralized finance protocol's smart contracts and frontend implementation.",
-      background:
-        "This DeFi protocol allows users to provide liquidity, stake tokens, and earn rewards. The protocol has recently undergone a major upgrade and is looking for security researchers to audit their implementation.",
+      title: "Decentralized File Storage CTF",
+      description: "Find vulnerabilities in a decentralized finance protocol's smart contracts and frontend implementation. Arweave is a decentralized, permanent storage protocol built on a novel blockchain-like structure called the blockweave. It allows data to be stored forever with a single, upfront payment — making it ideal for archiving, dApps, and censorship-resistant publishing.",
       difficulty: "Hard",
-      categories: ["Smart Contract", "DeFi"],
-      platform: "Ethereum",
-      platformIcon: "/placeholder.svg?height=24&width=24",
+      categories: ["Smart Contract", "Decentralized File Storage"],
+      platform: "Arweave",
+      platformIcon: "/arweave_ctf.png",
       reward: 50000,
       timeLeft: "14 days",
       timePercentage: 65,
@@ -862,8 +852,7 @@ export function getCTFChallenges() {
         inScope: [
           {
             name: "Core Protocol Contracts",
-            description:
-              "The main protocol contracts including pools, staking, and governance",
+            description: "The main protocol contracts including pools, staking, and governance",
             tags: ["Solidity", "ERC-20", "ERC-721"],
           },
           {
@@ -890,26 +879,22 @@ export function getCTFChallenges() {
         {
           level: "Critical",
           amount: 50000,
-          description:
-            "Vulnerabilities that can lead to direct loss of funds or complete protocol takeover",
+          description: "Vulnerabilities that can lead to direct loss of funds or complete protocol takeover",
         },
         {
           level: "High",
           amount: 25000,
-          description:
-            "Vulnerabilities that can lead to significant loss of funds or protocol disruption",
+          description: "Vulnerabilities that can lead to significant loss of funds or protocol disruption",
         },
         {
           level: "Medium",
           amount: 10000,
-          description:
-            "Vulnerabilities that can lead to limited loss of funds or protocol disruption",
+          description: "Vulnerabilities that can lead to limited loss of funds or protocol disruption",
         },
         {
           level: "Low",
           amount: 2500,
-          description:
-            "Vulnerabilities that have minimal impact on the protocol or users",
+          description: "Vulnerabilities that have minimal impact on the protocol or users",
         },
       ],
       contacts: {
@@ -917,6 +902,7 @@ export function getCTFChallenges() {
         discord: "https://discord.gg/defiprotocol",
         email: "security@defiprotocol.com",
       },
+      background: ""
     },
     {
       id: "nft-marketplace-audit",
