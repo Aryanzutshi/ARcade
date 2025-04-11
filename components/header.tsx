@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Terminal, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import WalletConnect from "@/components/walletConnect"
+import { connectWallet, disconnectWallet, getWalletDetails } from "@/utils/arKit";
+import { Button } from "./ui/button";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,12 +45,12 @@ export function Header() {
         <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
           {/* Wallet Button Here */}
-          {/* <Button
+          <Button
+            onClick={ connectWallet }
             className="bg-gradient-to-r rounded-2xl from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white shadow-md transition-transform hover:scale-105"
           >
             Connect Wallet
-          </Button> */}
-          <WalletConnect />
+          </Button>
         </div>
 
         <div className="flex md:hidden items-center space-x-4">

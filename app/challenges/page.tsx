@@ -10,10 +10,10 @@ export default function ChallengePage() {
   const challenges = getChallenges()
 
   return (
-    <div className="container px-4 py-12 md:py-24">
+    <div className="container px-4 py-12 md:py-24 text-zinc-900 dark:text-zinc-100">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
-          <Link href="/" className="inline-flex items-center text-sm text-zinc-400 hover:text-white mb-4">
+          <Link href="/" className="inline-flex items-center text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
@@ -27,18 +27,18 @@ export default function ChallengePage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-zinc-900/50 dark:bg-zinc-900/50 bg-zinc-100/50 border border-zinc-800 dark:border-zinc-800 border-zinc-300 rounded-xl p-6 mb-8">
+      <div className="bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-800 rounded-xl p-6 mb-8">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-500" />
             <Input
               placeholder="Search challenges..."
-              className="pl-10 bg-zinc-800 dark:bg-zinc-800 bg-zinc-100 border-zinc-700 dark:border-zinc-700 border-zinc-300"
+              className="pl-10 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100"
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Select defaultValue="all">
-              <SelectTrigger className="w-full sm:w-[180px] bg-zinc-800 dark:bg-zinc-800 bg-zinc-100 border-zinc-700 dark:border-zinc-700 border-zinc-300">
+              <SelectTrigger className="w-full sm:w-[180px] bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white">
                 <SelectValue placeholder="Difficulty" />
               </SelectTrigger>
               <SelectContent>
@@ -49,7 +49,7 @@ export default function ChallengePage() {
               </SelectContent>
             </Select>
             <Select defaultValue="all">
-              <SelectTrigger className="w-full sm:w-[180px] bg-zinc-800 dark:bg-zinc-800 bg-zinc-100 border-zinc-700 dark:border-zinc-700 border-zinc-300">
+              <SelectTrigger className="w-full sm:w-[180px] bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -62,7 +62,7 @@ export default function ChallengePage() {
             </Select>
             <Button
               variant="outline"
-              className="border-zinc-700 dark:border-zinc-700 border-zinc-300 text-zinc-400 dark:text-zinc-400 text-zinc-600"
+              className="border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300"
             >
               <Filter className="mr-2 h-4 w-4" />
               Filters
@@ -145,41 +145,23 @@ export default function ChallengePage() {
       {/* Pagination */}
       <div className="flex justify-center">
         <nav className="flex items-center space-x-2">
-          <Button
-            variant="outline"
-            className="border-zinc-700 dark:border-zinc-700 border-zinc-300 text-zinc-400 dark:text-zinc-400 text-zinc-600 w-10 h-10 p-0"
-          >
+          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
             &lt;
           </Button>
-          <Button
-            variant="outline"
-            className="border-zinc-700 dark:border-zinc-700 border-zinc-300 bg-zinc-800 dark:bg-zinc-800 bg-zinc-200 text-white dark:text-white text-zinc-900 w-10 h-10 p-0"
-          >
+          <Button className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
             1
           </Button>
-          <Button
-            variant="outline"
-            className="border-zinc-700 dark:border-zinc-700 border-zinc-300 text-zinc-400 dark:text-zinc-400 text-zinc-600 w-10 h-10 p-0"
-          >
+          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
             2
           </Button>
-          <Button
-            variant="outline"
-            className="border-zinc-700 dark:border-zinc-700 border-zinc-300 text-zinc-400 dark:text-zinc-400 text-zinc-600 w-10 h-10 p-0"
-          >
+          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
             3
           </Button>
           <span className="text-zinc-500">...</span>
-          <Button
-            variant="outline"
-            className="border-zinc-700 dark:border-zinc-700 border-zinc-300 text-zinc-400 dark:text-zinc-400 text-zinc-600 w-10 h-10 p-0"
-          >
+          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
             8
           </Button>
-          <Button
-            variant="outline"
-            className="border-zinc-700 dark:border-zinc-700 border-zinc-300 text-zinc-400 dark:text-zinc-400 text-zinc-600 w-10 h-10 p-0"
-          >
+          <Button variant="outline" className="w-10 h-10 p-0 border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
             &gt;
           </Button>
         </nav>
