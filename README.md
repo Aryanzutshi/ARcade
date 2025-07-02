@@ -50,8 +50,8 @@
 
 ## 🔑 Key Features
 
-- 🔐 **Exciting CTF Challenges** — Hone your red/blue team skills  
 - 🧪 **Hands-on Labs** — Real-world simulations for practical learning  
+- 🔐 **Exciting CTF Challenges** — Hone your red/blue team skills  
 - 📚 **Curated Curriculum** — Topics like cryptography, Solidity, Foundry, and more  
 - 🌉 **Arweave Ecosystem Integration** — Deep-dive into decentralized storage & AO  
 - 🏆 **Leaderboards** — Track your progress and climb the ranks  
